@@ -263,6 +263,20 @@ namespace Lab1
     "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
+        private string ClearSpaces(string s)
+        {
+            StringBuilder builder = new StringBuilder();
+
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] != ' ')
+                {
+                    builder.Append(s[i]);
+                }
+            }
+            return builder.ToString();
+        }
+
         private void ColumnEncryptBtn_Click(object sender, EventArgs e)
         {
             string filteredKey = columnCipher.FilterRussianText(columnKeyText.Text);
@@ -272,7 +286,9 @@ namespace Lab1
                 return;
             }
 
-            columnOutputText.Text = columnCipher.Encrypt(columnInputText.Text, columnKeyText.Text);
+            string text = ClearSpaces(columnInputText.Text);
+
+            columnOutputText.Text = columnCipher.Encrypt(text, columnKeyText.Text);
         }
 
         private void ColumnDecryptBtn_Click(object sender, EventArgs e)
@@ -283,8 +299,9 @@ namespace Lab1
                 ShowKeyError();
                 return;
             }
+            string text = ClearSpaces(columnInputText.Text);
 
-            columnOutputText.Text = columnCipher.Decrypt(columnInputText.Text, columnKeyText.Text);
+            columnOutputText.Text = columnCipher.Decrypt(text, columnKeyText.Text);
         }
 
         private void ColumnLoadFileBtn_Click(object sender, EventArgs e)
@@ -338,8 +355,9 @@ namespace Lab1
                 ShowKeyError();
                 return;
             }
+            string text = ClearSpaces(vigenereInputText.Text);
 
-            vigenereOutputText.Text = vigenereCipher.Encrypt(vigenereInputText.Text, vigenereKeyText.Text);
+            vigenereOutputText.Text = vigenereCipher.Encrypt(text, vigenereKeyText.Text);
         }
 
         private void VigenereDecryptBtn_Click(object sender, EventArgs e)
@@ -350,8 +368,9 @@ namespace Lab1
                 ShowKeyError();
                 return;
             }
+            string text = ClearSpaces(vigenereInputText.Text);
 
-            vigenereOutputText.Text = vigenereCipher.Decrypt(vigenereInputText.Text, vigenereKeyText.Text);
+            vigenereOutputText.Text = vigenereCipher.Decrypt(text, vigenereKeyText.Text);
         }
 
         private void VigenereLoadFileBtn_Click(object sender, EventArgs e)

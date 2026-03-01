@@ -36,7 +36,7 @@
               "RelativeDocumentMoniker": "Lab1\\Form1.cs",
               "ToolTip": "C:\\MyFiles\\Study\\TI\\Lab1\\Lab1\\Form1.cs",
               "RelativeToolTip": "Lab1\\Form1.cs",
-              "ViewState": "AgIAAJ4AAAAAAAAAAAAgwK4AAABIAAAAAAAAAA==",
+              "ViewState": "AgIAABwBAAAAAAAAAAAqwC8BAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-25T20:05:25.042Z",
               "IsPinned": true,
@@ -52,8 +52,7 @@
               "RelativeToolTip": "Lab1\\Cipher.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-01T12:30:13.58Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T12:30:13.58Z"
             },
             {
               "$type": "Document",
@@ -65,8 +64,7 @@
               "RelativeToolTip": "Lab1\\VigenereCipher.cs",
               "ViewState": "AgIAAG0AAAAAAAAAAAAowHQAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-01T12:29:13.811Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T12:29:13.811Z"
             },
             {
               "$type": "Document",
@@ -78,8 +76,7 @@
               "RelativeToolTip": "Lab1\\ColumnCipher.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-01T12:27:35.617Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-01T12:27:35.617Z"
             }
           ]
         }

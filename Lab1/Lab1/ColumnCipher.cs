@@ -4,10 +4,9 @@ public class ColumnCipher : Cipher
 {
     public override string Encrypt(string text, string key)
     {
-        string filteredText = FilterRussianText(text);
         string cleanKey = FilterRussianText(key);
 
-        if (string.IsNullOrEmpty(filteredText))
+        if (string.IsNullOrEmpty(text))
             return text;
 
         if (string.IsNullOrEmpty(cleanKey))
@@ -18,7 +17,7 @@ public class ColumnCipher : Cipher
         var keyOrder = GetKeyOrder(upperKey);
 
         int cols = upperKey.Length;
-        int rows = (int)Math.Ceiling((double)filteredText.Length / cols);
+        int rows = (int)Math.Ceiling((double)text.Length / cols);
         char[,] table = new char[rows, cols];
 
         int index = 0;
@@ -26,10 +25,10 @@ public class ColumnCipher : Cipher
         {
             for (int j = 0; j < cols; j++)
             {
-                if (index < filteredText.Length)
-                    table[i, j] = filteredText[index++];
+                if (index < text.Length)
+                    table[i, j] = text[index++];
                 else
-                    table[i, j] = ' ';
+                    table[i, j] = '\0';
             }
         }
 
@@ -39,7 +38,7 @@ public class ColumnCipher : Cipher
             int col = keyOrder[k];
             for (int i = 0; i < rows; i++)
             {
-                if (table[i, col] != ' ')
+                if (table[i, col] != '\0')
                     result.Append(table[i, col]);
             }
         }
@@ -49,10 +48,9 @@ public class ColumnCipher : Cipher
 
     public override string Decrypt(string text, string key)
     {
-        string filteredText = FilterRussianText(text);
         string cleanKey = FilterRussianText(key);
 
-        if (string.IsNullOrEmpty(filteredText))
+        if (string.IsNullOrEmpty(text))
             return text;
 
         if (string.IsNullOrEmpty(cleanKey))
@@ -62,14 +60,14 @@ public class ColumnCipher : Cipher
         var keyOrder = GetKeyOrder(upperKey);
 
         int cols = upperKey.Length;
-        int rows = (int)Math.Ceiling((double)filteredText.Length / cols);
+        int rows = (int)Math.Ceiling((double)text.Length / cols);
         int totalCells = rows * cols;
 
-        char[] decrypted = new char[filteredText.Length];
+        char[] decrypted = new char[text.Length];
         int[] colLengths = new int[cols];
 
-        int fullCols = filteredText.Length % cols;
-        int baseLength = filteredText.Length / cols;
+        int fullCols = text.Length % cols;
+        int baseLength = text.Length / cols;
 
         for (int i = 0; i < cols; i++)
         {
@@ -84,9 +82,9 @@ public class ColumnCipher : Cipher
             int col = keyOrder[k];
             for (int i = 0; i < colLengths[col]; i++)
             {
-                if (textIndex < filteredText.Length)
+                if (textIndex < text.Length)
                 {
-                    table[i, col] = filteredText[textIndex++];
+                    table[i, col] = text[textIndex++];
                 }
             }
         }

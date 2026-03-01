@@ -14,3 +14,4 @@ C:\MyFiles\Study\TI\Lab1\Lab1\obj\Debug\net8.0-windows\refint\Lab1.dll
 C:\MyFiles\Study\TI\Lab1\Lab1\obj\Debug\net8.0-windows\Lab1.pdb
 C:\MyFiles\Study\TI\Lab1\Lab1\obj\Debug\net8.0-windows\Lab1.genruntimeconfig.cache
 C:\MyFiles\Study\TI\Lab1\Lab1\obj\Debug\net8.0-windows\ref\Lab1.dll
+C:\MyFiles\Study\TI\Lab1\Lab1\obj\Debug\net8.0-windows\Lab1.sourcelink.json

@@ -5,6 +5,18 @@
     {
       "AbsoluteMoniker": "D:0:0:{2113C5CC-01A3-416F-BDBA-D559A164950F}|Lab1\\Lab1.csproj|c:\\myfiles\\study\\ti\\lab1\\lab1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2113C5CC-01A3-416F-BDBA-D559A164950F}|Lab1\\Lab1.csproj|solutionrelative:lab1\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2113C5CC-01A3-416F-BDBA-D559A164950F}|Lab1\\Lab1.csproj|c:\\myfiles\\study\\ti\\lab1\\lab1\\vigenerecipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2113C5CC-01A3-416F-BDBA-D559A164950F}|Lab1\\Lab1.csproj|solutionrelative:lab1\\vigenerecipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2113C5CC-01A3-416F-BDBA-D559A164950F}|Lab1\\Lab1.csproj|c:\\myfiles\\study\\ti\\lab1\\lab1\\cipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2113C5CC-01A3-416F-BDBA-D559A164950F}|Lab1\\Lab1.csproj|solutionrelative:lab1\\cipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2113C5CC-01A3-416F-BDBA-D559A164950F}|Lab1\\Lab1.csproj|c:\\myfiles\\study\\ti\\lab1\\lab1\\columncipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2113C5CC-01A3-416F-BDBA-D559A164950F}|Lab1\\Lab1.csproj|solutionrelative:lab1\\columncipher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -24,9 +36,49 @@
               "RelativeDocumentMoniker": "Lab1\\Form1.cs",
               "ToolTip": "C:\\MyFiles\\Study\\TI\\Lab1\\Lab1\\Form1.cs",
               "RelativeToolTip": "Lab1\\Form1.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAAYwEYAAABEAAAAAAAAAA==",
+              "ViewState": "AgIAAJ4AAAAAAAAAAAAgwK4AAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-25T20:05:25.042Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Cipher.cs",
+              "DocumentMoniker": "C:\\MyFiles\\Study\\TI\\Lab1\\Lab1\\Cipher.cs",
+              "RelativeDocumentMoniker": "Lab1\\Cipher.cs",
+              "ToolTip": "C:\\MyFiles\\Study\\TI\\Lab1\\Lab1\\Cipher.cs",
+              "RelativeToolTip": "Lab1\\Cipher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T12:30:13.58Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "VigenereCipher.cs",
+              "DocumentMoniker": "C:\\MyFiles\\Study\\TI\\Lab1\\Lab1\\VigenereCipher.cs",
+              "RelativeDocumentMoniker": "Lab1\\VigenereCipher.cs",
+              "ToolTip": "C:\\MyFiles\\Study\\TI\\Lab1\\Lab1\\VigenereCipher.cs",
+              "RelativeToolTip": "Lab1\\VigenereCipher.cs",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAowHQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T12:29:13.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ColumnCipher.cs",
+              "DocumentMoniker": "C:\\MyFiles\\Study\\TI\\Lab1\\Lab1\\ColumnCipher.cs",
+              "RelativeDocumentMoniker": "Lab1\\ColumnCipher.cs",
+              "ToolTip": "C:\\MyFiles\\Study\\TI\\Lab1\\Lab1\\ColumnCipher.cs",
+              "RelativeToolTip": "Lab1\\ColumnCipher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T12:27:35.617Z",
               "EditorCaption": ""
             }
           ]

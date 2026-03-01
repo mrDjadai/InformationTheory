@@ -26,6 +26,7 @@ namespace Lab1
 
         private ColumnCipher columnCipher = new ColumnCipher();
         private VigenereCipher vigenereCipher = new VigenereCipher();
+        private Font buttonFont = new Font("Arial", 8);
 
         public Form1()
         {
@@ -66,9 +67,10 @@ namespace Lab1
             layout.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));  // Входной текст
             layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F)); // Метка ключа
             layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F)); // Поле ключа
-            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F)); // Кнопки
+            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F)); // Кнопки
+            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             layout.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));  // Выходной текст
-            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F)); // Кнопки файлов
+            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F)); // Кнопки файлов
 
             var inputLabel = new Label();
             inputLabel.Text = "Входной текст:";
@@ -98,11 +100,15 @@ namespace Lab1
 
             columnEncryptBtn = new Button();
             columnEncryptBtn.Text = "Зашифровать";
+            columnEncryptBtn.Font = buttonFont;
+
             columnEncryptBtn.Width = 120;
             columnEncryptBtn.Click += ColumnEncryptBtn_Click;
 
             columnDecryptBtn = new Button();
             columnDecryptBtn.Text = "Расшифровать";
+            columnDecryptBtn.Font = buttonFont;
+
             columnDecryptBtn.Width = 120;
             columnDecryptBtn.Click += ColumnDecryptBtn_Click;
 
@@ -130,11 +136,15 @@ namespace Lab1
 
             columnLoadFileBtn = new Button();
             columnLoadFileBtn.Text = "Загрузить из файла";
+            columnLoadFileBtn.Font = buttonFont;
+
             columnLoadFileBtn.Width = 150;
             columnLoadFileBtn.Click += ColumnLoadFileBtn_Click;
 
             columnSaveFileBtn = new Button();
             columnSaveFileBtn.Text = "Сохранить в файл";
+            columnSaveFileBtn.Font = buttonFont;
+
             columnSaveFileBtn.Width = 150;
             columnSaveFileBtn.Click += ColumnSaveFileBtn_Click;
 
@@ -161,9 +171,10 @@ namespace Lab1
             layout.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));  // Входной текст
             layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F)); // Метка ключа
             layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F)); // Поле ключа
-            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 50)); // Кнопки
+            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F)); // Кнопки
+            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F)); 
             layout.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));  // Выходной текст
-            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F)); // Кнопки файлов
+            layout.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F)); // Кнопки файлов
 
             // Входной текст
             var inputLabel = new Label();
@@ -194,11 +205,13 @@ namespace Lab1
 
             vigenereEncryptBtn = new Button();
             vigenereEncryptBtn.Text = "Зашифровать";
+            vigenereEncryptBtn.Font = buttonFont;
             vigenereEncryptBtn.Width = 120;
             vigenereEncryptBtn.Click += VigenereEncryptBtn_Click;
 
             vigenereDecryptBtn = new Button();
             vigenereDecryptBtn.Text = "Расшифровать";
+            vigenereDecryptBtn.Font = buttonFont;
             vigenereDecryptBtn.Width = 120;
             vigenereDecryptBtn.Click += VigenereDecryptBtn_Click;
 
@@ -226,11 +239,13 @@ namespace Lab1
 
             vigenereLoadFileBtn = new Button();
             vigenereLoadFileBtn.Text = "Загрузить из файла";
+            vigenereLoadFileBtn.Font = buttonFont;
             vigenereLoadFileBtn.Width = 150;
             vigenereLoadFileBtn.Click += VigenereLoadFileBtn_Click;
 
             vigenereSaveFileBtn = new Button();
             vigenereSaveFileBtn.Text = "Сохранить в файл";
+            vigenereSaveFileBtn.Font = buttonFont;
             vigenereSaveFileBtn.Width = 150;
             vigenereSaveFileBtn.Click += VigenereSaveFileBtn_Click;
 

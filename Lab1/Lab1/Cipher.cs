@@ -5,6 +5,11 @@ public abstract class Cipher
     protected const string RussianAlphabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
     protected const string RussianAlphabetLower = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
 
+    protected bool IsRussianChar(char c)
+    {
+        return RussianAlphabet.Contains(c) || RussianAlphabetLower.Contains(c);
+    }
+
     public abstract string Encrypt(string text, string key);
     public abstract string Decrypt(string text, string key);
 

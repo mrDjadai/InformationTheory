@@ -4,10 +4,9 @@ public class VigenereCipher : Cipher
 {
     public override string Encrypt(string text, string key)
     {
-        string filteredText = FilterRussianText(text);
         string cleanKey = FilterRussianText(key);
 
-        if (string.IsNullOrEmpty(filteredText))
+        if (string.IsNullOrEmpty(text))
             return text;
 
         if (string.IsNullOrEmpty(cleanKey))
@@ -15,19 +14,31 @@ public class VigenereCipher : Cipher
 
         StringBuilder result = new StringBuilder();
 
-        string generatedKey = GenerateKeyForEncrypt(cleanKey, filteredText);
+        string generatedKey = GenerateKeyForEncrypt(cleanKey, text);
+        int keyIndex = 0;
 
-        for (int i = 0; i < filteredText.Length; i++)
+        for (int i = 0; i < text.Length; i++)
         {
-            char currentChar = filteredText[i];
-            char keyChar = generatedKey[i];
+            char currentChar = text[i];
 
-            bool isUpper = RussianAlphabet.Contains(currentChar);
-            int textIndex = GetCharIndex(currentChar);
-            int keyIndex = GetCharIndex(keyChar);
+            bool isRussianChar = IsRussianChar(currentChar);
 
-            int encryptedIndex = (textIndex + keyIndex) % RussianAlphabet.Length;
-            result.Append(GetCharByIndex(encryptedIndex, isUpper));
+            if (!isRussianChar)
+            {
+                result.Append(currentChar);
+            }
+            else
+            {
+                char keyChar = generatedKey[keyIndex];
+                keyIndex++;
+
+                bool isUpper = RussianAlphabet.Contains(currentChar);
+                int textIndex = GetCharIndex(currentChar);
+                int keyCharIndex = GetCharIndex(keyChar);
+
+                int encryptedIndex = (textIndex + keyCharIndex) % RussianAlphabet.Length;
+                result.Append(GetCharByIndex(encryptedIndex, isUpper));
+            }
         }
 
         return result.ToString();
@@ -35,10 +46,9 @@ public class VigenereCipher : Cipher
 
     public override string Decrypt(string text, string key)
     {
-        string filteredText = FilterRussianText(text);
         string filteredKey = FilterRussianText(key);
 
-        if (string.IsNullOrEmpty(filteredText))
+        if (string.IsNullOrEmpty(text))
             return text;
 
         if (string.IsNullOrEmpty(filteredKey))
@@ -46,7 +56,44 @@ public class VigenereCipher : Cipher
 
         StringBuilder result = new StringBuilder();
 
-        string generatedKey = GenerateKeyForDecrypt(filteredKey, filteredText, result);
+        // Собираем ключевые символы по мере обработки
+        List<char> keyChars = new List<char>();
+        foreach (char k in filteredKey)
+        {
+            keyChars.Add(k);
+        }
+
+        int keyIndex = 0;
+        int russianCharCount = 0;
+
+        for (int i = 0; i < text.Length; i++)
+        {
+            char currentChar = text[i];
+
+            bool isRussianChar = IsRussianChar(currentChar);
+
+            if (!isRussianChar)
+            {
+                result.Append(currentChar);
+            }
+            else
+            {
+                char keyChar = keyChars[keyIndex];
+
+                bool isUpper = RussianAlphabet.Contains(currentChar);
+                int textIndex = GetCharIndex(currentChar);
+                int keyCharIndex = GetCharIndex(keyChar);
+
+                int decryptedIndex = (textIndex - keyCharIndex + RussianAlphabet.Length) % RussianAlphabet.Length;
+                char decryptedChar = GetCharByIndex(decryptedIndex, isUpper);
+                result.Append(decryptedChar);
+
+                keyChars.Add(decryptedChar);
+
+                keyIndex++;
+                russianCharCount++;
+            }
+        }
 
         return result.ToString();
     }
@@ -69,45 +116,4 @@ public class VigenereCipher : Cipher
         return generatedKey.ToString().Substring(0, plainText.Length);
     }
 
-    private string GenerateKeyForDecrypt(string key, string cipherText, StringBuilder result)
-    {
-        StringBuilder generatedKey = new StringBuilder();
-
-        generatedKey.Append(key);
-
-        for (int i = 0; i < Math.Min(key.Length, cipherText.Length); i++)
-        {
-            char cipherChar = cipherText[i];
-            char keyChar = generatedKey[i];
-
-            bool isUpper = RussianAlphabet.Contains(cipherChar);
-            int cipherIndex = GetCharIndex(cipherChar);
-            int keyIndex = GetCharIndex(keyChar);
-
-            int decryptedIndex = (cipherIndex - keyIndex + RussianAlphabet.Length) % RussianAlphabet.Length;
-            char decryptedChar = GetCharByIndex(decryptedIndex, isUpper);
-
-            result.Append(decryptedChar);
-        }
-
-        // Ключ из текста
-        for (int i = key.Length; i < cipherText.Length; i++)
-        {
-            generatedKey.Append(result[i - key.Length]);
-
-            char cipherChar = cipherText[i];
-            char keyChar = generatedKey[i];
-
-            bool isUpper = RussianAlphabet.Contains(cipherChar);
-            int cipherIndex = GetCharIndex(cipherChar);
-            int keyIndex = GetCharIndex(keyChar);
-
-            int decryptedIndex = (cipherIndex - keyIndex + RussianAlphabet.Length) % RussianAlphabet.Length;
-            char decryptedChar = GetCharByIndex(decryptedIndex, isUpper);
-
-            result.Append(decryptedChar);
-        }
-
-        return generatedKey.ToString();
-    }
 }

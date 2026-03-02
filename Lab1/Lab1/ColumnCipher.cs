@@ -12,12 +12,30 @@ public class ColumnCipher : Cipher
         if (string.IsNullOrEmpty(cleanKey))
             return text;
 
+        List<char> russianChars = new List<char>();
+        int[] russianPositions = new int[text.Length];
+        for (int i = 0; i < text.Length; i++)
+        {
+            if (IsRussianChar(text[i]))
+            {
+                russianPositions[i] = russianChars.Count;
+                russianChars.Add(text[i]);
+            }
+            else
+            {
+                russianPositions[i] = -1;
+            }
+        }
 
+        if (russianChars.Count == 0)
+            return text;
+
+        string russianText = new string(russianChars.ToArray());
         string upperKey = cleanKey.ToUpper();
         var keyOrder = GetKeyOrder(upperKey);
 
         int cols = upperKey.Length;
-        int rows = (int)Math.Ceiling((double)text.Length / cols);
+        int rows = (int)Math.Ceiling((double)russianText.Length / cols);
         char[,] table = new char[rows, cols];
 
         int index = 0;
@@ -25,21 +43,31 @@ public class ColumnCipher : Cipher
         {
             for (int j = 0; j < cols; j++)
             {
-                if (index < text.Length)
-                    table[i, j] = text[index++];
+                if (index < russianText.Length)
+                    table[i, j] = russianText[index++];
                 else
                     table[i, j] = '\0';
             }
         }
 
-        StringBuilder result = new StringBuilder();
+        StringBuilder encryptedRussian = new StringBuilder();
         for (int k = 0; k < cols; k++)
         {
             int col = keyOrder[k];
             for (int i = 0; i < rows; i++)
             {
                 if (table[i, col] != '\0')
-                    result.Append(table[i, col]);
+                    encryptedRussian.Append(table[i, col]);
+            }
+        }
+
+        StringBuilder result = new StringBuilder(text);
+        int russianIndex = 0;
+        for (int i = 0; i < text.Length; i++)
+        {
+            if (russianPositions[i] != -1)
+            {
+                result[i] = encryptedRussian[russianIndex++];
             }
         }
 
@@ -56,18 +84,35 @@ public class ColumnCipher : Cipher
         if (string.IsNullOrEmpty(cleanKey))
             return text;
 
+        List<char> russianChars = new List<char>();
+        int[] russianPositions = new int[text.Length];
+        for (int i = 0; i < text.Length; i++)
+        {
+            if (IsRussianChar(text[i]))
+            {
+                russianPositions[i] = russianChars.Count;
+                russianChars.Add(text[i]);
+            }
+            else
+            {
+                russianPositions[i] = -1;
+            }
+        }
+        if (russianChars.Count == 0)
+            return text;
+
+        string russianText = new string(russianChars.ToArray());
         string upperKey = cleanKey.ToUpper();
         var keyOrder = GetKeyOrder(upperKey);
 
         int cols = upperKey.Length;
-        int rows = (int)Math.Ceiling((double)text.Length / cols);
+        int rows = (int)Math.Ceiling((double)russianText.Length / cols);
         int totalCells = rows * cols;
 
-        char[] decrypted = new char[text.Length];
         int[] colLengths = new int[cols];
 
-        int fullCols = text.Length % cols;
-        int baseLength = text.Length / cols;
+        int fullCols = russianText.Length % cols;
+        int baseLength = russianText.Length / cols;
 
         for (int i = 0; i < cols; i++)
         {
@@ -82,20 +127,30 @@ public class ColumnCipher : Cipher
             int col = keyOrder[k];
             for (int i = 0; i < colLengths[col]; i++)
             {
-                if (textIndex < text.Length)
+                if (textIndex < russianText.Length)
                 {
-                    table[i, col] = text[textIndex++];
+                    table[i, col] = russianText[textIndex++];
                 }
             }
         }
 
-        StringBuilder result = new StringBuilder();
+        StringBuilder decryptedRussian = new StringBuilder();
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < cols; j++)
             {
                 if (table[i, j] != '\0')
-                    result.Append(table[i, j]);
+                    decryptedRussian.Append(table[i, j]);
+            }
+        }
+
+        StringBuilder result = new StringBuilder(text);
+        int russianIndex = 0;
+        for (int i = 0; i < text.Length; i++)
+        {
+            if (russianPositions[i] != -1)
+            {
+                result[i] = decryptedRussian[russianIndex++];
             }
         }
 

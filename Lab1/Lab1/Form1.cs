@@ -286,7 +286,7 @@ namespace Lab1
                 return;
             }
 
-            string text = ClearSpaces(columnInputText.Text);
+            string text = columnInputText.Text; // ClearSpaces(columnInputText.Text);
 
             columnOutputText.Text = columnCipher.Encrypt(text, columnKeyText.Text);
         }
@@ -299,7 +299,7 @@ namespace Lab1
                 ShowKeyError();
                 return;
             }
-            string text = ClearSpaces(columnInputText.Text);
+            string text = columnInputText.Text; //ClearSpaces(columnInputText.Text);
 
             columnOutputText.Text = columnCipher.Decrypt(text, columnKeyText.Text);
         }
@@ -355,7 +355,7 @@ namespace Lab1
                 ShowKeyError();
                 return;
             }
-            string text = ClearSpaces(vigenereInputText.Text);
+            string text = vigenereInputText.Text; // ClearSpaces(vigenereInputText.Text);
 
             vigenereOutputText.Text = vigenereCipher.Encrypt(text, vigenereKeyText.Text);
         }
@@ -368,7 +368,7 @@ namespace Lab1
                 ShowKeyError();
                 return;
             }
-            string text = ClearSpaces(vigenereInputText.Text);
+            string text = vigenereInputText.Text; // ClearSpaces(vigenereInputText.Text);
 
             vigenereOutputText.Text = vigenereCipher.Decrypt(text, vigenereKeyText.Text);
         }

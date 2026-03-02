@@ -12,32 +12,52 @@ public class VigenereCipher : Cipher
         if (string.IsNullOrEmpty(cleanKey))
             return text;
 
-        StringBuilder result = new StringBuilder();
-
-        string generatedKey = GenerateKeyForEncrypt(cleanKey, text);
-        int keyIndex = 0;
-
+        List<char> russianChars = new List<char>();
+        int[] russianPositions = new int[text.Length];
         for (int i = 0; i < text.Length; i++)
         {
-            char currentChar = text[i];
-
-            bool isRussianChar = IsRussianChar(currentChar);
-
-            if (!isRussianChar)
+            if (IsRussianChar(text[i]))
             {
-                result.Append(currentChar);
+                russianPositions[i] = russianChars.Count;
+                russianChars.Add(text[i]);
             }
             else
             {
-                char keyChar = generatedKey[keyIndex];
-                keyIndex++;
+                russianPositions[i] = -1;
+            }
+        }
 
-                bool isUpper = RussianAlphabet.Contains(currentChar);
-                int textIndex = GetCharIndex(currentChar);
-                int keyCharIndex = GetCharIndex(keyChar);
+        if (russianChars.Count == 0)
+            return text;
 
-                int encryptedIndex = (textIndex + keyCharIndex) % RussianAlphabet.Length;
-                result.Append(GetCharByIndex(encryptedIndex, isUpper));
+        string russianText = new string(russianChars.ToArray());
+
+        string generatedKey = GenerateKeyForEncrypt(cleanKey, russianText);
+
+        StringBuilder encryptedRussian = new StringBuilder();
+        int keyIndex = 0;
+
+        for (int i = 0; i < russianText.Length; i++)
+        {
+            char currentChar = russianText[i];
+            char keyChar = generatedKey[keyIndex];
+            keyIndex++;
+
+            bool isUpper = RussianAlphabet.Contains(currentChar);
+            int textIndex = GetCharIndex(currentChar);
+            int keyCharIndex = GetCharIndex(keyChar);
+
+            int encryptedIndex = (textIndex + keyCharIndex) % RussianAlphabet.Length;
+            encryptedRussian.Append(GetCharByIndex(encryptedIndex, isUpper));
+        }
+
+        StringBuilder result = new StringBuilder(text);
+        int russianIndex = 0;
+        for (int i = 0; i < text.Length; i++)
+        {
+            if (russianPositions[i] != -1)
+            {
+                result[i] = encryptedRussian[russianIndex++];
             }
         }
 
@@ -54,44 +74,60 @@ public class VigenereCipher : Cipher
         if (string.IsNullOrEmpty(filteredKey))
             return text;
 
-        StringBuilder result = new StringBuilder();
+        List<char> russianChars = new List<char>();
+        int[] russianPositions = new int[text.Length];
+        for (int i = 0; i < text.Length; i++)
+        {
+            if (IsRussianChar(text[i]))
+            {
+                russianPositions[i] = russianChars.Count;
+                russianChars.Add(text[i]);
+            }
+            else
+            {
+                russianPositions[i] = -1;
+            }
+        }
 
-        // Собираем ключевые символы по мере обработки
+        if (russianChars.Count == 0)
+            return text;
+
+        string russianText = new string(russianChars.ToArray());
+
+
         List<char> keyChars = new List<char>();
         foreach (char k in filteredKey)
         {
             keyChars.Add(k);
         }
 
+        StringBuilder decryptedRussian = new StringBuilder();
         int keyIndex = 0;
-        int russianCharCount = 0;
 
+        for (int i = 0; i < russianText.Length; i++)
+        {
+            char currentChar = russianText[i];
+            char keyChar = keyChars[keyIndex];
+            keyIndex++;
+
+            bool isUpper = RussianAlphabet.Contains(currentChar);
+            int textIndex = GetCharIndex(currentChar);
+            int keyCharIndex = GetCharIndex(keyChar);
+
+            int decryptedIndex = (textIndex - keyCharIndex + RussianAlphabet.Length) % RussianAlphabet.Length;
+            char decryptedChar = GetCharByIndex(decryptedIndex, isUpper);
+            decryptedRussian.Append(decryptedChar);
+
+            keyChars.Add(decryptedChar);
+        }
+
+        StringBuilder result = new StringBuilder(text);
+        int russianIndex = 0;
         for (int i = 0; i < text.Length; i++)
         {
-            char currentChar = text[i];
-
-            bool isRussianChar = IsRussianChar(currentChar);
-
-            if (!isRussianChar)
+            if (russianPositions[i] != -1)
             {
-                result.Append(currentChar);
-            }
-            else
-            {
-                char keyChar = keyChars[keyIndex];
-
-                bool isUpper = RussianAlphabet.Contains(currentChar);
-                int textIndex = GetCharIndex(currentChar);
-                int keyCharIndex = GetCharIndex(keyChar);
-
-                int decryptedIndex = (textIndex - keyCharIndex + RussianAlphabet.Length) % RussianAlphabet.Length;
-                char decryptedChar = GetCharByIndex(decryptedIndex, isUpper);
-                result.Append(decryptedChar);
-
-                keyChars.Add(decryptedChar);
-
-                keyIndex++;
-                russianCharCount++;
+                result[i] = decryptedRussian[russianIndex++];
             }
         }
 
@@ -100,6 +136,9 @@ public class VigenereCipher : Cipher
 
     private string GenerateKeyForEncrypt(string key, string plainText)
     {
+        if (string.IsNullOrEmpty(plainText))
+            return string.Empty;
+
         StringBuilder generatedKey = new StringBuilder();
 
         generatedKey.Append(key);
@@ -107,13 +146,9 @@ public class VigenereCipher : Cipher
         int keyLength = key.Length;
         for (int i = 0; i < plainText.Length - key.Length; i++)
         {
-            if (i < plainText.Length)
-            {
-                generatedKey.Append(plainText[i]);
-            }
+            generatedKey.Append(plainText[i]);
         }
 
-        return generatedKey.ToString().Substring(0, plainText.Length);
+        return generatedKey.ToString();
     }
-
 }

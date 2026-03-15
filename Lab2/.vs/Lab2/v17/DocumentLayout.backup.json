@@ -1,0 +1,70 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\MyFiles\\Study\\TI\\Lab2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D5B3B5CF-52EE-4239-A999-052920462723}|Lab2\\Lab2.csproj|c:\\myfiles\\study\\ti\\lab2\\lab2\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5B3B5CF-52EE-4239-A999-052920462723}|Lab2\\Lab2.csproj|solutionrelative:lab2\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5B3B5CF-52EE-4239-A999-052920462723}|Lab2\\Lab2.csproj|c:\\myfiles\\study\\ti\\lab2\\lab2\\lfsr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D5B3B5CF-52EE-4239-A999-052920462723}|Lab2\\Lab2.csproj|solutionrelative:lab2\\lfsr.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D5B3B5CF-52EE-4239-A999-052920462723}|Lab2\\Lab2.csproj|C:\\MyFiles\\Study\\TI\\Lab2\\lab2\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{D5B3B5CF-52EE-4239-A999-052920462723}|Lab2\\Lab2.csproj|solutionrelative:lab2\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LFSR.cs",
+              "DocumentMoniker": "C:\\MyFiles\\Study\\TI\\Lab2\\Lab2\\LFSR.cs",
+              "RelativeDocumentMoniker": "Lab2\\LFSR.cs",
+              "ToolTip": "C:\\MyFiles\\Study\\TI\\Lab2\\Lab2\\LFSR.cs",
+              "RelativeToolTip": "Lab2\\LFSR.cs",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAqwCsAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T13:25:49.836Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\MyFiles\\Study\\TI\\Lab2\\Lab2\\Form1.cs",
+              "RelativeDocumentMoniker": "Lab2\\Form1.cs",
+              "ToolTip": "C:\\MyFiles\\Study\\TI\\Lab2\\Lab2\\Form1.cs",
+              "RelativeToolTip": "Lab2\\Form1.cs",
+              "ViewState": "AgIAAHkAAAAAAAAAAAD4v9IAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T12:45:10.314Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\MyFiles\\Study\\TI\\Lab2\\Lab2\\Form1.cs",
+              "RelativeDocumentMoniker": "Lab2\\Form1.cs",
+              "ToolTip": "C:\\MyFiles\\Study\\TI\\Lab2\\Lab2\\Form1.cs [Design]",
+              "RelativeToolTip": "Lab2\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-15T12:29:43.848Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

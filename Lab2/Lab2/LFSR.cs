@@ -4,14 +4,13 @@ public static class LFSR
 {
     private const int registerLength = 36;
 
-    private static bool[] register;
+    private static bool[] register = new bool[registerLength];
 
     public static bool Initialize(string initialState)
     {
         if (initialState.Length != registerLength)
             return false;
 
-        register = new bool[registerLength];
         for (int i = 0; i < registerLength; i++)
         {
             register[registerLength - 1 -i] = initialState[i] == '1';
@@ -41,6 +40,8 @@ public static class LFSR
         if (register == null)
             return false;
 
+        bool[] savedRegister = (bool[])register.Clone();
+
         StringBuilder keyStream = new StringBuilder(length + (length / 8));
         for (int i = 0; i < length; i++)
         {
@@ -53,12 +54,13 @@ public static class LFSR
         }
 
         result = keyStream.ToString();
+        register = savedRegister;
         return true;
     }
 
     public static bool ProcessData(byte[] inputData, out byte[] result)
     {
-        result = null;
+        result = new byte[0];
         if (register == null)
             return false;
 
